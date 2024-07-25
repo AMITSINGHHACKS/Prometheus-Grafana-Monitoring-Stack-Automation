@@ -5,4 +5,6 @@ sudo tar -xvf prometheus.tar.gz
 EXTRACTED_DIR=$(tar -tzf prometheus.tar.gz | head -1 | cut -f1 -d"/")
 sudo mv $EXTRACTED_DIR prometheus
 sudo rm prometheus.tar.gz
+cd prometheus
+./prometheus &
 echo "Prometheus has been downloaded and extracted to the 'prometheus' directory."
