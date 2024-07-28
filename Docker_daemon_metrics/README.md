@@ -1,21 +1,23 @@
-To expose the docker daemon metrics create or edit the file "daemon.json"
-Exposing Docker daemon metrics does not need any exporter so it directly exposes the metrics which can be read by prometheus 
+To expose the docker daemon metrics create or edit the file "daemon.json”
 
-default Dir = /etc/docker/
-if daemon.json is not present create that file using SUDO and add the below line 
+Exposing Docker daemon metrics does not need any exporter so it directly exposes the metrics which can be read by prometheus
 
+Default Dir = /etc/docker
 
-{
-  "metrics-addr": "0.0.0.0:9323",
-  "experimental": true
+if daemon.json is not present create that file using “sudo” and add the below line
+
+```json
+{ 
+"metrics-addr": "0.0.0.0:9323", "experimental": true 
 }
+```
 
-
-default docker daemon exposes port on "9323" 
+Default docker daemon exposes metrics on port "9323”
 
 *You can also add the below line instead in that daemon.json file but it usually doesnt works and doesnt expose the metrics so u can use the above snippet which has 0.0.0.0 ip*
 
-{
-  "metrics-addr": "YOURVMIP:9323",
-  "experimental": true
+```json
+{ 
+"metrics-addr": "your VM IP :9323", "experimental": true 
 }
+```
