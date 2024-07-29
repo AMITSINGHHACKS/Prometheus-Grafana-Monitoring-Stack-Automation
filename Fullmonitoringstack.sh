@@ -40,7 +40,7 @@ EXTRACTED_DIR=$(tar -tzf nodexp.tar.gz | head -1 | cut -f1 -d"/")
 mv $EXTRACTED_DIR nodexp
 rm nodexp.tar.gz
 cd nodexp
-./alertmanager &
+./node_exporter &
 echo "nodexp has been downloaded and extracted to the 'nodexp' directory."
 cd ..
 
