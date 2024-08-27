@@ -41,3 +41,38 @@ scrape_configs:
       # scheme defaults to 'http'.
     static_configs:
       - targets: ["ip:9323"]
+
+  - job_name: "jenkins"
+    metrics_path: /prometheus
+      # metrics_path defaults to '/metrics'
+      # scheme defaults to 'http'.
+    static_configs:
+      - targets: ["localhost:8080"]
+
+
+  - job_name: 'blackbox'
+    params:
+      module: [http_2xx]
+    static_configs:
+      - targets:
+        - ip:9115
+
+  - job_name: 'blackbox-https'
+    scrape_timeout: 15s
+    scrape_interval: 15s
+    metrics_path: /probe
+    params:
+      module:
+        - http_2xx
+    static_configs:
+      - targets:
+          - ipwhichneedstobemonitored
+    relabel_configs:
+      - source_labels:
+          - __address__
+        target_label: __param_target
+      - source_labels:
+          - __param_target
+        target_label: instance
+      - target_label: __address__
+        replacement: ip:9115
