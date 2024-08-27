@@ -12,3 +12,4 @@ Prometheus: 9090 /
 Alertmanager: 9093 /
 grafana: 3000 /
 Node_exporter: 9100 /
+Blacbox Exporter: 9115 /
