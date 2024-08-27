@@ -59,3 +59,18 @@ cd grafana
 ./bin/grafana-server &
 echo "grafana has been downloaded and extracted to the 'grafana' directory."
 cd ..
+
+
+
+#######################################################################################
+################################## BLACKBOX ###########################################
+
+wget https://github.com/prometheus/blackbox_exporter/releases/download/v0.25.0/blackbox_exporter-0.25.0.linux-amd64.tar.gz -O blackbox.tar.gz
+tar -xvf blackbox.tar.gz
+EXTRACTED_DIR=$(tar -tzf blackbox.tar.gz | head -1 | cut -f1 -d"/")
+mv $EXTRACTED_DIR blackbox
+rm blackbox.tar.gz
+cd blackbox
+./blackbox_exporter &
+echo "blackbox has been downloaded and extracted to the 'blackbox' directory."
+cd ..
